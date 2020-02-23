@@ -30,39 +30,43 @@ class LinkedList(object):
         """Get an element from a particular position.
         Assume the first position is "1".
         Return "None" if position is not in the list."""
-        e = self.head
-        i = 0
-        pos = None
-        if position <1:
-            return None
-        if self.head:
-            while e:
-                i+=1
-                if i == position:
-                    pos = e
-                e = e.next
-        else:
-            return None
-        return pos
-    
+        i = 1
+        current = self.head
+        while current:
+            if i == position:
+                return current
+            current = current.next
+            i+=1
+        return None
+
     def insert(self, new_element, position):
         """Insert a new node at the given position.
         Assume the first position is "1".
         Inserting at position 3 means between
         the 2nd and 3rd elements."""
-        e = self.head
-        i = 0
-        if self.head:
-            while e:
-                i+=1
-                if i == position-1:
-                    new_element.next = e.next
-                    e.next = new_element
-                e = e.next
-                
+        current = self.head
+        i = 1
+        while current:
+            if i == position -1:
+                new_element.next = current.next
+                current.next = new_element
+            i+=1
+            current = current.next
+
     def delete(self, value):
         """Delete the first node with a given value."""
-        pass
+        current = self.head
+        prev = None
+        position = 1
+        while current:
+            prev = current
+            current = current.next
+            if prev.value == value and position == 1:
+                self.head = prev.next
+            elif prev.value == value and position != 1:
+                prev.next = current.next
+            position += 1
+
 
 # Test cases
 # Set up some Elements
@@ -84,14 +88,14 @@ print ll.get_position(3).value
 
 # Test insert
 ll.insert(e4,3)
-# # Should print 4 now
+# Should print 4 now
 print ll.get_position(3).value
 
-# # Test delete
-# ll.delete(1)
-# # Should print 2 now
-# print ll.get_position(1).value
-# # Should print 4 now
-# print ll.get_position(2).value
-# # Should print 3 now
-# print ll.get_position(3).value
+# Test delete
+ll.delete(1)
+# Should print 2 now
+print ll.get_position(1).value
+# Should print 4 now
+print ll.get_position(2).value
+# Should print 3 now
+print ll.get_position(3).value
