@@ -50,9 +50,16 @@ class LinkedList(object):
         Assume the first position is "1".
         Inserting at position 3 means between
         the 2nd and 3rd elements."""
-        pass
-    
-    
+        e = self.head
+        i = 0
+        if self.head:
+            while e:
+                i+=1
+                if i == position-1:
+                    new_element.next = e.next
+                    e.next = new_element
+                e = e.next
+                
     def delete(self, value):
         """Delete the first node with a given value."""
         pass
@@ -76,9 +83,9 @@ print ll.head.next.next.value
 print ll.get_position(3).value
 
 # Test insert
-# ll.insert(e4,3)
+ll.insert(e4,3)
 # # Should print 4 now
-# print ll.get_position(3).value
+print ll.get_position(3).value
 
 # # Test delete
 # ll.delete(1)
