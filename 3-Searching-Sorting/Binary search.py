@@ -12,24 +12,24 @@ doesn't exist in the list."""
 
 def binary_search(input_array, value):
     """Your code goes here."""
-    len_by_2 = len(input_array)/2
-    print str(len_by_2)
-
-    find = -1
-    t = 0
-
-    while t == 0:
-        for i in range(0,len_by_2):
-            if input_array[i] == value:
-                print str(value) +" - "+ str(len_by_2)
-            if input_array[i] > value:
-                print str(value) +" - "+ str(len_by_2)
-        t=1
-
-    return find
+    while True:
+        div_by_2 = len(input_array)/2
+        if input_array[div_by_2] == value:
+            return value
+        elif input_array[div_by_2] > value:
+            # Resize the tab
+            input_array = input_array[0:div_by_2+1]
+        elif input_array[div_by_2] < value:
+            # Resize the tab
+            input_array = input_array[div_by_2: len(input_array)+1]
+        if div_by_2 == 1:
+            if input_array[0] == value:
+                return value
+            return -1
+    return -1
 
 test_list = [1,3,9,11,15,19,29]
 test_val1 = 25
 test_val2 = 15
 print binary_search(test_list, test_val1)
-# print binary_search(test_list, test_val2)
+print binary_search(test_list, test_val2)
