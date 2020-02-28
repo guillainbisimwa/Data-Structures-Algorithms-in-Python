@@ -16,7 +16,7 @@ Atlanta (USA, North America)
 Cairo (Egypt, Africa)
 Shanghai (China, Asia)"""
 
-locations = {'North America': {'USA': ['Mountain View']}}
+locations = {'North America': {'USA': ['Mountain View','Atlanta']}, 'Asia': {'India':['Bangalore'],'China':['Shanghai']}, 'Africa':{'Egypt':['Ciaro']}}
 
 """Print the following (using "print").
 1. A list of all cities in the USA in
@@ -31,3 +31,15 @@ American City
 2
 Asian City - Country
 Asian City - Country"""
+
+print 1
+for city in  sorted(locations['North America']['USA']):
+    print city
+
+asiaCity = []
+print 2
+for country in locations['Asia']:
+    for city in locations['Asia'][country]:
+        asiaCity.append(city +" - "+country)
+for city in  sorted(asiaCity):
+    print city
